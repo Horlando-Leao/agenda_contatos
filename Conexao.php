@@ -10,7 +10,7 @@ class Conexao
     public static function getInstance()
     {
         if (is_null(self::$conexao)) {
-            self::$conexao = new \PDO('mysql:host=localhost;port=3306;dbname=crud_contatos', 'root', '');
+            self::$conexao = new \PDO('mysql:host=localhost;port=3306;dbname=agenda_contatos', 'root', '');
             self::$conexao->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
             self::$conexao->exec('set names utf8');
         }
