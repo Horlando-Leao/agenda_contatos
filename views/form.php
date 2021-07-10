@@ -16,9 +16,19 @@
             <div class="form-check form-check-inline">
                 <label class="col-sm-2 col-form-label text-right">Ativo:</label>
                 <label class="form-check-label" for="exampleRadios1">Sim</label>
-                <input type="radio" class="form-check-input" name="ativo" id="ativo" value="sim" <?php echo ($contato->ativo == "sim") ? "checked" : null; ?>/>
+                <input type="radio" class="form-check-input" name="ativo" id="ativo" value="sim" 
+                <?php 
+                    if (isset($contato->ativo)){
+                        echo ($contato->ativo == "sim") ? "checked" : null; 
+                    }
+                ?>/>
                 <label class="form-check-label" for="exampleRadios1">Não</label>
-                <input type="radio" class="form-check-input" name="ativo" id="ativo" value="não" <?php echo ($contato->ativo == "não") ? "checked" : null; ?> />
+                <input type="radio" class="form-check-input" name="ativo" id="ativo" value="não" 
+                <?php 
+                if (isset($contato->ativo)){
+                    echo ($contato->ativo == "não") ? "checked" : null; 
+                    }
+                ?> />
             </div>
 
             <div class="form-group form-row">
