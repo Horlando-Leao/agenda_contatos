@@ -1,5 +1,6 @@
 <?php
 
+include 'models/Conexao.php';
 
 class Contato
 {

@@ -5,7 +5,7 @@
         <thead>
             <tr>
                 <th>Nome</th>
-                <th>Telefone</th>
+                <th>Ativo</th>
                 <th>Email</th>
                 <th><a href="?controller=ContatosController&method=criar" class="btn btn-success btn-sm">Novo</a></th>
             </tr>
@@ -17,7 +17,7 @@
                     ?>
                     <tr>
                         <td><?php echo $contato->nome; ?></td>
-                        <td><?php echo $contato->telefone; ?></td>
+                        <td><?php echo $contato->ativo; ?></td>
                         <td><?php echo $contato->email; ?></td>
                         <td>
                             <a href="?controller=ContatosController&method=editar&id=<?php echo $contato->id; ?>" class="btn btn-primary btn-sm">Editar</a>

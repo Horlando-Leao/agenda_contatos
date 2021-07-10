@@ -1,5 +1,7 @@
 <?php
 
+include 'models/Contato.php';
+
 class ContatosController extends Controller
 {
 
@@ -38,8 +40,10 @@ class ContatosController extends Controller
     {
         $contato           = new Contato;
         $contato->nome     = $this->request->nome;
-        $contato->telefone = $this->request->telefone;
+        $contato->ativo    = $this->request->ativo;
         $contato->email    = $this->request->email;
+        $contato->senha    = $this->request->senha;
+
         if ($contato->save()) {
             return $this->listar();
         }
@@ -53,8 +57,9 @@ class ContatosController extends Controller
         $id                = (int) $dados['id'];
         $contato           = Contato::find($id);
         $contato->nome     = $this->request->nome;
-        $contato->telefone = $this->request->telefone;
+        $contato->ativo    = $this->request->ativo;
         $contato->email    = $this->request->email;
+        $contato->senha    = $this->request->senha;
         $contato->save();
 
         return $this->listar();

@@ -1,5 +1,6 @@
 <?php
 
+
 class Controller
 {
     public $request;
@@ -11,6 +12,7 @@ class Controller
 
     public function view($arquivo, $array = null)
     {
+        $arquivo = "views/".$arquivo;
         if (!is_null($array)) {
             foreach ($array as $var => $value) {
                 ${$var} = $value;
