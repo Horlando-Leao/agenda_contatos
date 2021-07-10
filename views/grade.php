@@ -7,6 +7,7 @@
                 <th>Nome</th>
                 <th>Ativo</th>
                 <th>Email</th>
+                <th>Ultima atualização</th>
                 <th><a href="?controller=ContatosController&method=criar" class="btn btn-success btn-sm">Novo</a></th>
             </tr>
         </thead>
@@ -15,10 +16,23 @@
             if ($contatos) {
                 foreach ($contatos as $contato) {
                     ?>
-                    <tr>
+                    <tr <?php 
+                        if ($contato->ativo == 'não'){
+                            echo('style="background-color: #ff8080; "');
+                        }
+                        ?> >
                         <td><?php echo $contato->nome; ?></td>
                         <td><?php echo $contato->ativo; ?></td>
                         <td><?php echo $contato->email; ?></td>
+                        <td>
+                        <?php 
+                        if ($contato->data_atualizacao == "0000-00-00 00:00:00"){
+                            echo $contato->data_criacao;
+                        } else {
+                            echo $contato->data_atualizacao;
+                        }
+                        ?>
+                        </td>
                         <td>
                             <a href="?controller=ContatosController&method=editar&id=<?php echo $contato->id; ?>" class="btn btn-primary btn-sm">Editar</a>
                             <a href="?controller=ContatosController&method=excluir&id=<?php echo $contato->id; ?>" class="btn btn-danger btn-sm">Excluir</a>

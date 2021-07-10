@@ -97,7 +97,7 @@ class Contato
     public static function all()
     {
         $conexao = Conexao::getInstance();
-        $stmt    = $conexao->prepare("SELECT * FROM contatos ORDER BY ativo ASC, CASE data_criacao WHEN  data_atualizacao THEN data_criacao ELSE data_atualizacao end  DESC;");
+        $stmt    = $conexao->prepare("SELECT * FROM contatos;");
         $result  = array();
         if ($stmt->execute()) {
             while ($rs = $stmt->fetchObject(Contato::class)) {

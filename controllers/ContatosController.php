@@ -1,6 +1,7 @@
 <?php
 
 include 'models/Contato.php';
+require 'utils/UtilDataTime.php';
 
 class ContatosController extends Controller
 {
@@ -54,12 +55,14 @@ class ContatosController extends Controller
      */
     public function atualizar($dados)
     {
+        
         $id                = (int) $dados['id'];
         $contato           = Contato::find($id);
         $contato->nome     = $this->request->nome;
         $contato->ativo    = $this->request->ativo;
         $contato->email    = $this->request->email;
         $contato->senha    = $this->request->senha;
+        $contato->data_atualizacao = UtilDateTime::getTimestamp();
         $contato->save();
 
         return $this->listar();
