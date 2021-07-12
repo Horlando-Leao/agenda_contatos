@@ -1,7 +1,7 @@
 <?php
 
 include 'models/Telefone.php';
-include 'models/Contato.php';
+include_once 'models/Contato.php';
 //require 'utils/UtilDateTime.php';
 
 class TelefonesController extends Controller
@@ -29,10 +29,16 @@ class TelefonesController extends Controller
      */
     public function editar($dados)
     {
+        var_dump($dados);
         $id      = (int) $dados['id'];
         $telefone = Telefone::find($id);
+        $id_contato = $dados['id_contato'];
 
-        return $this->view('formTelefone', ['telefone' => $telefone]);
+        //tela fica em branco
+        return $this->view('formTelefone', ['telefone' => $telefone, 'id_contato' => $id_contato ]);
+
+        //tela fica aparece tudo, mas o botão de voltar não funciona
+        //return $this->view('formTelefone', ['telefone' => $telefone ]);
     }
 
     /**
@@ -58,7 +64,7 @@ class TelefonesController extends Controller
     /**
      * Atualizar o telefone conforme dados submetidos
      */
-    public function atualizar($dados, $id_contato)
+    public function atualizar($dados)
     {
         date_default_timezone_set('America/Recife');
         $dateNow = new DateTime();
@@ -71,16 +77,22 @@ class TelefonesController extends Controller
         $telefone->data_atualizacao = $dateNow;
         $telefone->save();
 
-        return $this->listar($id_contato);
+        //return $this->listar($dados['id_contato']$id_contato);
+        $idCon      = (int) $dados['id_contato'];
+        $contato = Contato::find($idCon);
+        return $this->view('formContato', ['contato' => $contato]);
     }
 
     /**
      * Apagar um telefone conforme o id informado
      */
-    public function excluir($dados, $id_contato)
+    public function excluir($dados)
     {
-        $id      = (int) $dados['id'];
-        $telefone = Telefone::destroy($id);
-        return $this->listar($id_contato);
+        $idTel     = (int) $dados['id'];
+        $telefone = Telefone::destroy($idTel);
+
+        $idCon      = (int) $dados['id_contato'];
+        $contato = Contato::find($idCon);
+        return $this->view('formContato', ['contato' => $contato]);
     }
 }

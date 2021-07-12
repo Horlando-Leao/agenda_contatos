@@ -36,8 +36,8 @@
                         ?>
                         </td>
                         <td>
-                            <a href="?controller=EnderecosController&method=editar&id=<?php echo $telefone->id; ?>" class="btn btn-primary btn-sm">Editar</a>
-                            <a href="?controller=EnderecosController&method=excluir&id=<?php echo $telefone->id; ?>" class="btn btn-danger btn-sm">Excluir</a>
+                            <a href="?controller=TelefonesController&method=editar&id=<?php echo $telefone->id; ?>&id_contato=<?php echo $id_contato; ?>" class="btn btn-primary btn-sm">Editar</a>
+                            <a href="?controller=TelefonesController&method=excluir&id=<?php echo $telefone->id; ?>&id_contato=<?php echo $id_contato; ?>" class="btn btn-danger btn-sm">Excluir</a>
                         </td>
                     </tr>
                     <?php

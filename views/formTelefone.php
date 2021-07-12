@@ -3,7 +3,7 @@
     <div class="card-header">
                 <span class="card-title">Telefone</span>
             </div>
-    <a class="btn btn-primary" href="?controller=ContatosController&method=editar&id=2"><i class="far fa-user"></i> Voltar</a>
+    <a class="btn btn-primary" href="?controller=ContatosController&method=editar&id=<?php echo intval($id_contato["id_contato"]); ?>"><i class="far fa-user"></i> Voltar</a>
         <div class="card" style="top:40px">
        
             <div class="card-body">
@@ -40,7 +40,7 @@
             <div class="card-footer">
                 <input type="hidden" name="id" id="id" value="<?php echo isset($telefone->id) ? $telefone->id : null; ?>" />
                 <button class="btn btn-success" type="submit">Salvar</button>
-                <button class="btn btn-secondary">Limpar</button>
+                <!-- <button class="btn btn-secondary">Limpar</button> -->
                 <!-- <a class="btn btn-danger" href="?controller=EnderecosController&method=listar">Cancelar</a> -->
             </div>
         </div>
