@@ -29,14 +29,15 @@ class TelefonesController extends Controller
      */
     public function editar($dados)
     {
-        var_dump($dados);
+        //var_dump($dados);
         $id      = (int) $dados['id'];
         $telefone = Telefone::find($id);
         $id_contato = $dados['id_contato'];
 
+        //var_dump($this);
         //tela fica em branco
         return $this->view('formTelefone', ['telefone' => $telefone, 'id_contato' => $id_contato ]);
-
+        
         //tela fica aparece tudo, mas o botão de voltar não funciona
         //return $this->view('formTelefone', ['telefone' => $telefone ]);
     }

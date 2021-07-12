@@ -3,7 +3,15 @@
     <div class="card-header">
                 <span class="card-title">Telefone</span>
             </div>
-    <a class="btn btn-primary" href="?controller=ContatosController&method=editar&id=<?php echo intval($id_contato["id_contato"]); ?>"><i class="far fa-user"></i> Voltar</a>
+    <a class="btn btn-primary" href="?controller=ContatosController&method=editar&id=
+    <?php 
+        if(isset($id_contato["id_contato"])){
+            echo intval($id_contato["id_contato"]); 
+        }else{
+            echo $id_contato;
+        }
+    ?>"><i class="far fa-user"></i> Voltar
+    </a>
         <div class="card" style="top:40px">
        
             <div class="card-body">
@@ -32,7 +40,12 @@
                     }
                 ?> />
                 <input type="text" style="display: none;" name="id_contato" id="id_contato" value="<?php
-                    echo $id_contato["id_contato"];
+                    if(isset($id_contato["id_contato"])){
+                        echo intval($id_contato["id_contato"]); 
+                    }else{
+                        echo $id_contato;
+                    }
+                    //echo $id_contato["id_contato"];
                 ?>" />
 
             </div>
