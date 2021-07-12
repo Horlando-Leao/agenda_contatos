@@ -2,7 +2,7 @@
 
 class ServiceViacep {
 
-    function getAdress($cep) {
+    public static function getAdress($cep) {
         // formatar o cep removendo caracteres nao numericos
         $cep = preg_replace("/[^0-9]/", "", $cep);
         $url = "http://viacep.com.br/ws/$cep/xml/";
@@ -11,3 +11,9 @@ class ServiceViacep {
         return $xml;
     }
 }
+
+// $newServiveGet = ServiceViacep::getAdress('53250040');
+// echo($newServiveGet->uf.' - ');
+// echo($newServiveGet->localidade.' - ');
+// echo($newServiveGet->logradouro.' - ');
+

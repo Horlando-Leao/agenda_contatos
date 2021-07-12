@@ -18,7 +18,7 @@
                     ?>
                     <tr <?php 
                         if ($contato->ativo == 'não'){
-                            echo('style="background-color: #ff8080; "');
+                            echo('style="background-color: #ff9090; "');
                         }
                         ?> >
                         <td><?php echo $contato->nome; ?></td>

@@ -49,7 +49,7 @@ spl_autoload_register(function($class) {
                 echo '<a href="?controller=ContatosController&method=listar" class="btn btn-success">Vamos Começar!</a></div>';
             }
         }catch (Exception $e){
-            echo("Exceção capturda: ". $e->getMessage(). "\n");
+            echo("Exceção capturada: ". $e->getMessage(). "\n");
 
         }
         ?>

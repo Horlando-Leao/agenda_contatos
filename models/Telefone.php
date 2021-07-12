@@ -1,6 +1,6 @@
 <?php
 
-include 'models/Conexao.php';
+include_once 'models/Conexao.php';
 
 class Telefone
 {
@@ -94,13 +94,13 @@ class Telefone
      * Retorna uma lista de telefone
      * @return array/boolean
      */
-    public static function all()
+    public static function all($id_contato)
     {
         $conexao = Conexao::getInstance();
-        $stmt    = $conexao->prepare("SELECT * FROM telefone;");
+        $stmt    = $conexao->prepare("SELECT * FROM telefone WHERE id_contato='{$id_contato}';");
         $result  = array();
         if ($stmt->execute()) {
-            while ($rs = $stmt->fetchObject(Contato::class)) {
+            while ($rs = $stmt->fetchObject(Telefone::class)) {
                 $result[] = $rs;
             }
         }

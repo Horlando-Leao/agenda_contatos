@@ -1,7 +1,7 @@
 <?php
 
-include 'models/Contato.php';
-require 'utils/UtilDataTime.php';
+require_once 'models/Contato.php';
+require_once 'utils/UtilDateTime.php';
 
 class ContatosController extends Controller
 {
@@ -12,7 +12,7 @@ class ContatosController extends Controller
     public function listar()
     {
         $contatos = Contato::all();
-        return $this->view('grade', ['contatos' => $contatos]);
+        return $this->view('gradeContato', ['contatos' => $contatos]);
     }
 
     /**
@@ -20,7 +20,7 @@ class ContatosController extends Controller
      */
     public function criar()
     {
-        return $this->view('form');
+        return $this->view('formContato');
     }
 
     /**
@@ -31,7 +31,8 @@ class ContatosController extends Controller
         $id      = (int) $dados['id'];
         $contato = Contato::find($id);
 
-        return $this->view('form', ['contato' => $contato]);
+        return $this->view('formContato', ['contato' => $contato]);
+        
     }
 
     /**
@@ -43,7 +44,6 @@ class ContatosController extends Controller
         $contato->nome     = $this->request->nome;
         $contato->ativo    = $this->request->ativo;
         $contato->email    = $this->request->email;
-        $contato->senha    = $this->request->senha;
 
         if ($contato->save()) {
             return $this->listar();
@@ -61,8 +61,8 @@ class ContatosController extends Controller
         $contato->nome     = $this->request->nome;
         $contato->ativo    = $this->request->ativo;
         $contato->email    = $this->request->email;
-        $contato->senha    = $this->request->senha;
         $contato->data_atualizacao = UtilDateTime::getTimestamp();
+
         $contato->save();
 
         return $this->listar();
