@@ -1,5 +1,5 @@
 <div class="container">
-    <form action="?controller=EnderecosController&<?php echo isset($endereco->id) ? "method=atualizar&id={$endereco->id}" : "method=salvar"; ?>" method="post" >
+    <form action="?controller=EnderecosController&<?php echo isset($endereco->id) ? "method=atualizar&id={$endereco->id}&id_contato={$id_contato}" : "method=salvar"; ?>" method="post" >
     
     <div class="card-header">
                 <span class="card-title">Endereços</span>

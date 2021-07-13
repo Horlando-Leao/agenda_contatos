@@ -1,5 +1,5 @@
 <div class="container">
-    <form action="?controller=TelefonesController&<?php echo isset($telefone->id) ? "method=atualizar&id={$telefone->id}" : "method=salvar"; ?>" method="post" >
+    <form action="?controller=TelefonesController&<?php echo isset($telefone->id) ? "method=atualizar&id={$telefone->id}&id_contato={$id_contato}" : "method=salvar"; ?>" method="post" >
     <div class="card-header">
                 <span class="card-title">Telefone</span>
             </div>
