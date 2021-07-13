@@ -2,7 +2,7 @@
 
 include_once 'models/Conexao.php';
 
-class Contato
+class Endereco
 {
     private $atributos;
 
@@ -35,7 +35,7 @@ class Contato
     {
         $colunas = $this->preparar($this->atributos);
         if (!isset($this->id)) {
-            $query = "INSERT INTO contatos (".
+            $query = "INSERT INTO endereco (".
                 implode(', ', array_keys($colunas)).
                 ") VALUES (".
                 implode(', ', array_values($colunas)).");";
@@ -45,7 +45,7 @@ class Contato
                     $definir[] = "{$key}={$value}";
                 }
             }
-            $query = "UPDATE contatos SET ".implode(', ', $definir)." WHERE id='{$this->id}';";
+            $query = "UPDATE endereco SET ".implode(', ', $definir)." WHERE id='{$this->id}';";
         }
         if ($conexao = Conexao::getInstance()) {
             $stmt = $conexao->prepare($query);
@@ -91,16 +91,16 @@ class Contato
     }
 
     /**
-     * Retorna uma lista de contatos
+     * Retorna uma lista de endereco
      * @return array/boolean
      */
-    public static function all()
+    public static function all($id_contato)
     {
         $conexao = Conexao::getInstance();
-        $stmt    = $conexao->prepare("SELECT * FROM contatos;");
+        $stmt    = $conexao->prepare("SELECT * FROM endereco WHERE id_contato='{$id_contato}';");
         $result  = array();
         if ($stmt->execute()) {
-            while ($rs = $stmt->fetchObject(Contato::class)) {
+            while ($rs = $stmt->fetchObject(Endereco::class)) {
                 $result[] = $rs;
             }
         }
@@ -117,7 +117,7 @@ class Contato
     public static function count()
     {
         $conexao = Conexao::getInstance();
-        $count   = $conexao->exec("SELECT count(*) FROM contatos;");
+        $count   = $conexao->exec("SELECT count(*) FROM endereco;");
         if ($count) {
             return (int) $count;
         }
@@ -132,10 +132,10 @@ class Contato
     public static function find($id)
     {
         $conexao = Conexao::getInstance();
-        $stmt    = $conexao->prepare("SELECT * FROM contatos WHERE id='{$id}';");
+        $stmt    = $conexao->prepare("SELECT * FROM endereco WHERE id='{$id}';");
         if ($stmt->execute()) {
             if ($stmt->rowCount() > 0) {
-                $resultado = $stmt->fetchObject('Contato');
+                $resultado = $stmt->fetchObject('Endereco');
                 if ($resultado) {
                     return $resultado;
                 }
@@ -152,7 +152,7 @@ class Contato
     public static function destroy($id)
     {
         $conexao = Conexao::getInstance();
-        if ($conexao->exec("DELETE FROM contatos WHERE id='{$id}';")) {
+        if ($conexao->exec("DELETE FROM endereco WHERE id='{$id}';")) {
             return true;
         }
         return false;

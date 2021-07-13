@@ -58,20 +58,18 @@
             ?> 
             <div class="collapse" id="collapseTelefones">
                 <div class="card card-body">
-                <!-- <a href="?controller=TelefonesController&method=listar&idnow=<?php echo $contato->id; ?>" class="btn btn-success">Vamos Começar!</a> -->
-                    
                     <?php
-                    //include_once './controllers/TelefonesController.php';
                     $ListarTelefones = new TelefonesController();
                     $ListarTelefones->listar($contato->id);
                     ?>
-                    </div>
+                </div>
             </div>
             <div class="collapse" id="collapseEnderecos">
                 <div class="card card-body">
                 <?php
-                echo ("-aaaaaaaaa<br>-aaaaaa<br>-aaaaaaaa");
-                ?>
+                    $ListarEnderecos = new EnderecosController();
+                    $ListarEnderecos->listar($contato->id);
+                    ?>
                 </div>
             </div>
             <div class="card-footer" style="margin-top: 40px;">
